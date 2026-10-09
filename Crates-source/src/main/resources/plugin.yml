@@ -1,0 +1,26 @@
+name: Crates
+version: '1.0.0'
+main: org.bcp.crates.CratesPlugin
+api-version: '1.21'
+description: Floating crates that are set up in a menu, keys, a /key command with one permission per crate and an hourly Key All.
+softdepend: [PlaceholderAPI, LuckPerms]
+
+commands:
+  crate:
+    description: Create, edit and place crates, give keys and control Key All.
+    usage: /crate <create|delete|gui|key|place|keyall|list|resetcooldown|reload>
+    aliases: [crates]
+  key:
+    description: Get the free key of a crate you have the permission for.
+    usage: /key <crate>
+
+permissions:
+  crates.admin:
+    description: Use /crate, edit crates in the menu, place and remove crates
+    default: op
+  crates.key.*:
+    description: Use /key for every crate. Every crate also has its own permission crates.key.<crate name>
+    default: op
+  crates.bypass.cooldown:
+    description: Use /key without the cooldown
+    default: false

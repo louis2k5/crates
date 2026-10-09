@@ -1,0 +1,64 @@
+# ---------------------------------------------------------------
+#  Crates
+# ---------------------------------------------------------------
+# Crates themselves (names, colours, rewards, chances, animations,
+# particles, sounds) are set up in the game with /crate gui.
+# This file only holds the general settings. Colour codes: &a, &l,
+# ... and &#RRGGBB for hex colours.
+#
+# Permissions:
+#   crates.admin            /crate, the menu, placing and removing crates
+#   crates.key.<crate>      /key <crate>   (one permission per crate, created automatically)
+#   crates.key.*            /key for every crate
+#   crates.bypass.cooldown  /key without the cooldown
+
+# Shown in front of the plugin's chat messages.
+prefix: "&8[&6Crates&8] &7"
+
+# Chance (1-100) a reward gets when it is put into a crate. Change it per item in the menu.
+default-chance: 50
+
+# The crates standing in the world.
+crate:
+  # How many blocks the crate floats above the block it was placed on.
+  hover-height: 1.0
+  # Size of the floating shulker box (1.0 = a normal block).
+  scale: 1.0
+  # Degrees the crate turns per tick (3.0 = one full turn in 6 seconds, 0 = it stands still).
+  rotation-speed: 3.0
+  # Show the crate's name above it.
+  show-name: true
+
+# The opening window.
+opening:
+  # The items move for a random time between these two values (seconds).
+  min-seconds: 6
+  max-seconds: 12
+  # Seconds a player has to wait before opening the next crate.
+  cooldown-seconds: 5
+  # false: a key anywhere in the inventory opens the crate (a key in the hand is used first).
+  # true: the key has to be in the main hand.
+  key-must-be-in-hand: false
+  # Name of the nether star above the prize.
+  prize-title: "&6&lYour Prize"
+
+# /key <crate>
+key-command:
+  # Hours until a player can use /key for the same crate again.
+  cooldown-hours: 48
+  # Keys per use.
+  amount: 1
+
+# Key All: a free key for every online player. Add keys with /crate keyall add <crate>,
+# then start it with /crate keyall start.
+keyall:
+  # Minutes between two rounds.
+  interval-minutes: 60
+  # Keys per player and round (of every crate that was added).
+  amount: 1
+  # A chat message is sent to everyone when this many seconds are left. Use [] for no messages.
+  announce-seconds: [300, 60, 10]
+  # What %crates_keyall% (PlaceholderAPI) shows. {time} is the timer, for example 42:17.
+  display:
+    running: "&e{time}"
+    paused: "&cpaused"
